@@ -15,7 +15,7 @@ resource "aws_key_pair" "my_key" {
 resource "local_file" "private_key" {
   content  = tls_private_key.rsa_4096.private_key_pem
   filename = "${path.module}/terraform-key.pem"  # saves in the same folder as your TF files
-  file_permission = "0400"                        # optional: set read-only permissions
+  file_permission = "0400"                       # optional: set read-only permissions
 }
 
 
