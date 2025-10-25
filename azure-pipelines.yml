@@ -7,7 +7,10 @@ trigger:
 - main
 
 pool:
-  vmImage: ubuntu-latest
+  name: 'Default'
+  demands:
+  - agent.name -equals ec2-docker-cicd-agent
+
 
 steps:
 - script: echo Hello, world!
