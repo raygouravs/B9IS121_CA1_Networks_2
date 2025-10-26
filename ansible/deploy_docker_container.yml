@@ -16,5 +16,5 @@
       ignore_errors: yes
 
     - name: Run container
-      command: docker run -d -p 8080:8080 --name webapp webapp:latest
+      command: docker run -d -p 8080:80 --name webapp webapp:latest
       ignore_errors: yes
