@@ -16,6 +16,10 @@ steps:
     displayName: "Syncing code updates from remote to local..."
 
   - script: |
+      echo "Changing to repo directory..."
+      cd $(Agent.BuildDirectory)/s
+      echo "Current directory: $(pwd)"
+      ls -al
       echo "Executing Ansible Playbook..."
       ansible-playbook -i inventory.ini deploy_docker_container.yml
     displayName: "Execute Ansible Playbook"
