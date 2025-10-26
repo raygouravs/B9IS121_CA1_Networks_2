@@ -21,7 +21,7 @@ steps:
       echo "Current directory: $(pwd)"
       ls -al
       echo "Executing Ansible Playbook..."
-      ansible-playbook -i inventory.ini deploy_docker_container.yml
+      ansible-playbook -i ansible/inventory.ini ansible/deploy_docker_container.yml
     displayName: "Execute Ansible Playbook"
 
 # ----------------------- Docker deployment CICD script END ----------------------------
