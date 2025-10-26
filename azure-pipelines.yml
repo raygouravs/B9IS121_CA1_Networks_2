@@ -1,0 +1,50 @@
+# ----------------------- Docker deployment CICD script BEGIN ----------------------------
+
+trigger:
+  branches:
+    include:
+      - main  # on checking in code to main branch the CI/CD pipeline is triggered
+
+pool:
+  name: 'Default'
+  demands:
+  - agent.name -equals ec2-docker-cicd-agent
+
+
+steps:
+  - checkout: self
+    displayName: "Syncing code updates from remote to local..."
+
+  - script: |
+      echo "Executing Ansible Playbook..."
+      ansible-playbook -i inventory.ini deploy_docker_container.yml
+    displayName: "Execute Ansible Playbook"
+
+# ----------------------- Docker deployment CICD script END ----------------------------
+
+
+
+
+# --------------------------- Test script BEGIN  ---------------------------
+
+
+# trigger:
+# - main
+
+# pool:
+#  name: 'Default'
+#  demands:
+#  - agent.name -equals ec2-docker-cicd-agent
+
+
+# steps:
+#- script: echo Hello, world!
+#  displayName: 'Run a one-line script'
+
+#- script: |
+#    echo Add other tasks to build, test, and deploy your project.
+#    echo See https://aka.ms/yaml
+#  displayName: 'Run a multi-line script'
+
+
+# --------------------------- Test script END  -----------------------------
