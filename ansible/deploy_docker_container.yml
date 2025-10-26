@@ -1,28 +1,19 @@
----
-- name: Docker Container Deployment
-  hosts: ec2
-  become: yes
-
+- name: Deploy Dockerized Web App on EC2
+  hosts: localhost
+  become: true
   tasks:
-    - name: Copy project files to ec2 instance
-      ansible.builtin.copy:
-        src: ../
-        dest: /home/ubuntu/webapp/
-        mode: 0755
-
     - name: Build Docker image
-      community.docker.docker_image:
-        name: dockerized_webapp
-        build:
-          path: /home/ubuntu/webapp
-        source: build
+      command: docker build -t webapp:latest .
+      args:
+        chdir: /home/ubuntu/desktop_contents/_work/1/s
 
-    - name: Run Docker container
-      community.docker.docker_container:
-        name: dockerized_webapp_container
-        image: dockerized_webapp
-        state: started
-        restart_policy: always
-        ports:
-          - "80:80"
+    - name: Stop existing container
+      command: docker stop webapp || true
+
+    - name: Remove existing container
+      command: docker rm webapp || true
+
+    - name: Run container
+      command: docker run -d -p 8080:8080 --name webapp webapp:latest
+
 
