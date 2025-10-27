@@ -1,7 +1,7 @@
-# Use an official Nginx image
+# Official Nginx image
 FROM nginx:latest
 
-# Remove default nginx website and copy our app
+# Remove default nginx website and copy app
 RUN rm -rf /usr/share/nginx/html/*
 COPY app/ /usr/share/nginx/html/
 

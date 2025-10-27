@@ -14,8 +14,8 @@ resource "aws_key_pair" "my_key" {
 # write key to a file
 resource "local_file" "private_key" {
   content  = tls_private_key.rsa_4096.private_key_pem
-  filename = "${path.module}/terraform-key.pem"  # saves in the same folder as your TF files
-  file_permission = "0400"                       # optional: set read-only permissions
+  filename = "${path.module}/terraform-key.pem"  
+  file_permission = "0400"                       
 }
 
 
@@ -27,7 +27,7 @@ output "private_key_pem" {
 
 
 # ---------------------------
-# Security Group
+# Security Group Configuration
 # ---------------------------
 resource "aws_security_group" "ec2_sg" {
   name        = "ec2-sg"
@@ -38,7 +38,7 @@ resource "aws_security_group" "ec2_sg" {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]  # replace with your IP for security
+    cidr_blocks = ["0.0.0.0/0"]  
   }
 
   ingress {
@@ -66,7 +66,7 @@ resource "aws_security_group" "ec2_sg" {
 }
 
 # ---------------------------
-# EC2 Instance
+# EC2 Instance Configuration
 # ---------------------------
 resource "aws_instance" "docker_server" {
   ami           = "ami-0bc691261a82b32bc"

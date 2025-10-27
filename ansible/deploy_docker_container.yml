@@ -1,20 +1,20 @@
-- name: Deploy Dockerized Web App on EC2
+- name: Docker Container Deployment on EC2
   hosts: localhost
   become: true
   tasks:
-    - name: Build Docker image
+    - name: Build the Docker image
       command: docker build --no-cache -t webapp:latest .
       args:
         chdir: /home/ubuntu/desktop_contents/_work/1/s
 
-    - name: Stop existing container
+    - name: Stop the existing Docker container
       command: docker stop webapp
       ignore_errors: yes
 
-    - name: Remove existing container
+    - name: Remove the existing Docker container
       command: docker rm webapp
       ignore_errors: yes
 
-    - name: Run container with restart policy
+    - name: Run the Docker container with restart policy unless-stopped enabled
       command: docker run -d -p 8080:80 --name webapp --restart unless-stopped webapp:latest
       ignore_errors: yes

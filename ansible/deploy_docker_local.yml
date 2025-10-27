@@ -1,23 +1,23 @@
 ---
-- name: Docker Container Deployment
+- name: Docker Container Deployment on the local machine
   hosts: localhost
   become: true
 
   tasks:
-    - name: Copy project files to ec2 instance
+    - name: Copy project files to the ec2 instance from local
       ansible.builtin.copy:
         src: ../
         dest: /home/ubuntu/webapp/
         mode: 0755
 
-    - name: Build Docker image
+    - name: Build the Docker image
       community.docker.docker_image:
         name: dockerized_webapp
         build:
           path: /home/ubuntu/webapp
         source: build
 
-    - name: Run Docker container
+    - name: Run the Docker container
       community.docker.docker_container:
         name: dockerized_webapp_container
         image: dockerized_webapp

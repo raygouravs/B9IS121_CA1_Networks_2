@@ -1,9 +1,9 @@
-# ----------------------- Docker deployment CICD script BEGIN ----------------------------
+# ----------------------- Docker deployment CICD yaml BEGIN ----------------------------
 
 trigger:
   branches:
     include:
-      - main  # on checking in code to main branch the CI/CD pipeline is triggered
+      - main  # Trigger on changes to the main branch
 
 pool:
   name: 'Default'
@@ -24,7 +24,7 @@ steps:
       ansible-playbook -i ansible/inventory.ini ansible/deploy_docker_container.yml
     displayName: "Execute Ansible Playbook"
 
-# ----------------------- Docker deployment CICD script END ----------------------------
+# ----------------------- Docker deployment CICD yaml END ----------------------------
 
 
 

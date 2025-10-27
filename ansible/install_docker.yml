@@ -1,13 +1,13 @@
 ---
-- name: Install and configure Docker on Ubuntu 24.04
+- name: Docker installation and configuration on EC2 instance
   hosts: ec2
   become: yes
   tasks:
-    - name: Update apt cache
+    - name: Update the apt cache
       apt:
         update_cache: yes
 
-    - name: Install prerequisite packages
+    - name: Installation of prerequisite packages
       apt:
         name:
           - apt-transport-https
@@ -17,7 +17,7 @@
           - gnupg
         state: present
 
-    - name: Add Docker’s official GPG key
+    - name: Official Docker GPG key addition step
       ansible.builtin.shell: |
         install -m 0755 -d /etc/apt/keyrings
         curl -fsSL https://download.docker.com/linux/ubuntu/gpg | gpg --dearmor -o /etc/apt/keyrings/docker.gpg
@@ -25,18 +25,18 @@
       args:
         creates: /etc/apt/keyrings/docker.gpg
 
-    - name: Add Docker repository for Ubuntu 24.04 (Noble)
+    - name: Add Docker repository for Ubuntu 24.04 EC2
       copy:
         dest: /etc/apt/sources.list.d/docker.list
         content: |
           deb [arch=amd64 signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu noble stable
-      notify: Update apt cache
+      notify: Update the apt cache
 
     - name: Update apt cache after adding Docker repo
       apt:
         update_cache: yes
 
-    - name: Install Docker Engine and related packages
+    - name: Installation of Docker Engine and related packages
       apt:
         name:
           - docker-ce
@@ -56,11 +56,11 @@
       command: docker --version
       register: docker_version_output
 
-    - name: Display Docker version
+    - name: Docker version
       debug:
         msg: "{{ docker_version_output.stdout }}"
 
   handlers:
-    - name: Update apt cache
+    - name: Update the apt cache
       apt:
         update_cache: yes
