@@ -1,6 +1,4 @@
-# ---------------------------
 # Generate SSH key pair with Terraform
-# ---------------------------
 resource "tls_private_key" "rsa_4096" {
   algorithm = "RSA"
   rsa_bits  = 4096
@@ -26,9 +24,7 @@ output "private_key_pem" {
 }
 
 
-# ---------------------------
 # Security Group Configuration
-# ---------------------------
 resource "aws_security_group" "ec2_sg" {
   name        = "ec2-sg"
   description = "Allow SSH, HTTP, HTTPS"
@@ -65,9 +61,7 @@ resource "aws_security_group" "ec2_sg" {
   }
 }
 
-# ---------------------------
 # EC2 Instance Configuration
-# ---------------------------
 resource "aws_instance" "docker_server" {
   ami           = "ami-0bc691261a82b32bc"
   instance_type = "t3.micro"
