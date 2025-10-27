@@ -15,6 +15,6 @@
       command: docker rm webapp
       ignore_errors: yes
 
-    - name: Run container
-      command: docker run -d -p 8080:80 --name webapp webapp:latest
+    - name: Run container with restart policy
+      command: docker run -d -p 8080:80 --name webapp --restart unless-stopped webapp:latest
       ignore_errors: yes
