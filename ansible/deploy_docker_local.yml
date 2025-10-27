@@ -1,5 +1,6 @@
 ---
-- name: Docker Container Deployment on the local machine
+# Ansible Playbook to deploy Docker container on EC2 instance from local machine
+- name: Docker Container Deployment on EC2 from the local machine
   hosts: localhost
   become: true
 

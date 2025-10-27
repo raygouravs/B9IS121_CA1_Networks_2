@@ -1,4 +1,5 @@
 ---
+# Ansible Playbook to install and configure Docker on an EC2 instance
 - name: Docker installation and configuration on EC2 instance
   hosts: ec2
   become: yes

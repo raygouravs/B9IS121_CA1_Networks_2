@@ -1,3 +1,5 @@
+---
+# Ansible Playbook to deploy Docker container on EC2 instance from the CICD pipeline self-hosted agent
 - name: Docker Container Deployment on EC2
   hosts: localhost
   become: true
