@@ -3,7 +3,7 @@
   become: true
   tasks:
     - name: Build Docker image
-      command: docker build -t webapp:latest .
+      command: docker build --no-cache -t webapp:latest .
       args:
         chdir: /home/ubuntu/desktop_contents/_work/1/s
 
