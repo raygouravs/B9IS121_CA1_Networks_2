@@ -1,5 +1,5 @@
 function showAlert() {
-  alert("Hello from the script in dockerized web app!");
+  alert("Alert! from the world of Containerised Web Apps!");
 }
 
 
