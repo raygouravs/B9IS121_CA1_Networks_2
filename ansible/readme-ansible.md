@@ -21,4 +21,4 @@ c) trigger docker build and container deployment process on the EC2 instance onc
 
 ## Steps to Run (For docker container deployment from CICD pipeline on the self-hosted agent)
 1. Update `inventory.ini` with - localhost ansible_connection=local
-2. deploy_docker_container - this asnible playbook is then triggered from the CICD pipeline in Azure Devops after code checkout.
+2. deploy_docker_container - this ansible playbook is then triggered from the CICD pipeline in Azure Devops after code checkout.
