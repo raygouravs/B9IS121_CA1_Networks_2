@@ -12,6 +12,8 @@ This project is about automation of infrastructure provisioning, configuration, 
 - **Docker** for containerization
 - **Azure DevOps** for CI/CD pipeline automation
 
+<img width="801" height="1321" alt="Devops-Arch-diagram-2" src="https://github.com/user-attachments/assets/2bc36528-6973-4023-bb7c-3c4ab5a05c45" />
+
 ---
 
 ## Folder Structure
