@@ -7,7 +7,7 @@
 
 ## Overview
 This project is about automation of infrastructure provisioning, configuration, containerization, and deployment of a web application on AWS using:
-- **Terraform** for infrastructure provisioning (EC2 instance)
+- **Terraform** for infrastructure provisioning (EC2 instance, Security Group)
 - **Ansible** for configuration management and deployment
 - **Docker** for containerization
 - **Azure DevOps** for CI/CD pipeline automation
