@@ -8,7 +8,7 @@
 ## Overview
 This project is about automation of infrastructure provisioning, configuration, containerization, and deployment of a web application on AWS using:
 - **Terraform** for infrastructure provisioning (EC2 instance, Security Group, SSH key-pair)
-- **Ansible** for configuration management and deployment
+- **Ansible** for docker configuration management and container deployment on EC2
 - **Docker** for containerization
 - **Azure DevOps** for CI/CD pipeline automation
 
@@ -32,7 +32,7 @@ B9IS121_CA1_Networks_2/
 ## Workflow Summary
 
 1. **Terraform** creates the EC2 instance and networking setup.
-2. **Ansible** handles Docker installation container deployment on the EC2.
+2. **Ansible** handles Docker installation and container deployment on the EC2.
 3. **Docker** builds the docker image of the web app.
 4. **Azure DevOps Pipeline** automates build and deployment on code check-in.
 
